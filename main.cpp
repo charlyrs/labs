@@ -11,7 +11,7 @@ int main() {
 	std :: cin >> x;
         std :: cout << "Enter the accuracy" << std :: endl;
 	std :: cin >> k;
-	accuracy = pow(10, -k);
+	accuracy = pow(10, -k-1);
 	term = -(x)* n0 / n1; //the second term: -x*1/2
 	if ((x > -1) && (x < 1) ) {   //checking the condition
 		while (abs(term) >= accuracy) { // comparing term with accuracy

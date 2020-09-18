@@ -14,7 +14,7 @@ int main() {
 	accuracy = pow(10, -k-1);
 	term = -(x)* n0 / n1; //the second term: -x*1/2
 	if ((x > -1) && (x < 1) ) {   //checking the condition
-		while (abs(term) >= accuracy) { // comparing term with accuracy
+		while (fabs(term) >= accuracy) { // comparing term with accuracy
 			sum += term;
 			n0 += 2;
 			n1 += 2;

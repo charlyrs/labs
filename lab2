@@ -1,0 +1,123 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+int main() {
+    srand(time(nullptr));
+    const int maxSize = 100;
+    int size;
+    std::cout << "Enter the size of an array\n";
+    std::cin >> size;
+    if (size > maxSize || size < 1) std::cout << "Error";
+    else {
+        double *arr = new double[size];
+        int enter;
+        std::cout << "How do you want to enter an array?\n" << "1. From keyboard\n" << "2. Random numbers\n";
+        std::cin >> enter;
+
+        switch (enter) {
+            case 1 : {
+                std::cout <<"Enter " << size << " numbers\n";
+                for (int i=0; i < size; i++) {
+                    std::cin >> arr[i];
+                }
+
+
+                break; }
+            case 2 : {
+                //int k;
+                double min, max;
+                std::cout << "Enter min\n ";
+                std::cin >> min;
+                std::cout << "Enter max\n ";
+                std::cin >> max;
+                for (int i=0; i < size; i++) {
+                    double X=((double)rand()/(double)RAND_MAX);
+                    arr[i] = (max-min)*X+min;   
+                }
+                break; }
+            default : {std::cout << "Error";
+                return 0; }
+        }
+
+        //TASK1
+        double maxModule= fabs (arr[0]);
+        for (int i=1; i < size; i++) {
+            if (fabs(arr[i]) > fabs(maxModule)) {
+                maxModule=fabs(arr[i]);
+            }
+        }
+        std::cout << "The original array\n";
+        for (int i=0; i < size; i++) {
+            std::cout << arr[i] << " ";
+        }
+
+        std::cout << "\nThe biggest module is " << maxModule << "\n";
+        //TASK 2
+        double sum=0;
+        for (int i=0; i < size; i++) {
+            if (arr[i] > 0 ) {
+                ++i;
+                while ( arr[i] <= 0) {
+                    sum+=arr[i];
+                    ++i;
+
+                }
+                break;
+            }
+
+        }
+        std::cout << "The sum of elements between the first two positive elements equals " << sum << "\n";
+
+        //TASK 3
+        int maxQuantity =0;
+        double currentElement=0;
+        int checked = 0;
+        int quantity=0;
+        double currentMaxElement=0;
+
+        while(checked < size - 1) {
+            maxQuantity=0;
+            for (int i = checked; i < size; i++) { // checking the most frequent elements among those, that were not sorted
+                currentElement = arr[i];
+                quantity = 0;
+
+                for (int j = i; j < size; j++) { //counting the frequency of elements
+                    if (arr[j] == currentElement) {
+                        quantity++;
+                    }
+                }
+                if (quantity > maxQuantity) { //defining the most frequent element
+                    maxQuantity = quantity;
+                    currentMaxElement=arr[i];
+                }
+            }
+            int sorted = 0;
+            while (sorted < maxQuantity) { // replacing elements
+                for (int i = checked; i < size; i++) {
+                    if (arr[i] == currentMaxElement) {
+                        sorted++;
+                        continue;
+                    }
+                    else {
+                        for (int j = i + 1; j < size; j++) {
+                            if (arr[j] == currentMaxElement) {
+                                std::swap(arr[i], arr[j]);
+                                sorted++;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            checked += maxQuantity;
+        }
+
+        std::cout << "Sorted array\n";
+        for (int i=0; i < size; i++) {
+            std::cout << arr[i] << " ";
+        }
+        delete [] arr;
+    }
+
+    return 0;
+}

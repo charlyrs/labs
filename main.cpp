@@ -110,28 +110,28 @@ int main() {
 
          matrix_output(matrix, size);
 
-         int positiverow = -1;
+         int negativerow = -1;
          int currentelement = 0;
          for (int i = 0; i < size; ++i) {
-             if (positiverow > 0) break;
+             if (negativerow > 0) break;
              else {
                  for (int j = 0; j < size; ++j) {
                      if (j > i) {
                          if (matrix[j][i] < 0) {
-                             positiverow = i + 1;  //counting rows starting from 1
+                             negativerow = i + 1;  //counting rows starting from 1
 
                          } else {
-                             positiverow = -1;
+                             negativerow = -1;
                              break;
                          }
 
                      } else {
                          currentelement = matrix[i][j];
                          if (matrix[i][j] < 0) {
-                             positiverow = i + 1;
+                             negativerow = i + 1;
 
                          } else {
-                             positiverow = -1;
+                             negaitiverow = -1;
                              break;
                          }
                      }
@@ -140,7 +140,7 @@ int main() {
 
          }
          std::cout << "\n";
-         if (positiverow > 0)std::cout <<"The number of the first row with only negative elements is " << positiverow;
+         if (negativerow > 0)std::cout <<"The number of the first row with only negative elements is " << positiverow;
          else std::cout << "There is no row with only negative elements\n";
 
      }

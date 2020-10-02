@@ -136,7 +136,7 @@ int main() {
         std::cout << "\n";
         if (negativerow > 0)std::cout << "The number of the first row with only negative elements is " << negativerow;
         else std::cout << "There is no row with only negative elements\n";
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < size; i++)
         {
             delete[] matrix[i];
         }

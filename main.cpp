@@ -17,7 +17,6 @@ void matrix_output(double** matrix, int size) {
     }
 }
 
-
 int main() {
     srand(time(nullptr));
 
@@ -119,28 +118,17 @@ int main() {
             if (negativerow > 0) break;
             else {
                 for (int j = 0; j < size; ++j) {
-                    if (j > i) {
-                        if (matr(matrix, i, j) < 0) {
-                            negativerow = i + 1;  //counting rows starting from 1
 
-                        }
-                        else {
-                            negativerow = -1;
-                            break;
-                        }
+                    if (matr(matrix, i, j) < 0) {
+                        negativerow = i + 1;  //counting rows starting from 1
 
                     }
                     else {
-                        currentelement = matrix[i][j];
-                        if (matr(matrix, i, j) < 0) {
-                            negativerow = i + 1;
-
-                        }
-                        else {
-                            negativerow = -1;
-                            break;
-                        }
+                        negativerow = -1;
+                        break;
                     }
+
+
                 }
             }
 

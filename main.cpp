@@ -11,7 +11,7 @@ void matrix_output(double** matrix, int size) {
 
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
-            std::cout << matr(matrix, i, j) << "  ";
+            std::cout << matr(matrix, i, j) << "     ";
         }
         std::cout << "\n";
     }
@@ -136,8 +136,14 @@ int main() {
         std::cout << "\n";
         if (negativerow > 0)std::cout << "The number of the first row with only negative elements is " << negativerow;
         else std::cout << "There is no row with only negative elements\n";
+        for (int i = 0; i < 10; i++)
+        {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
 
     }
+
 
     return 0;
 }

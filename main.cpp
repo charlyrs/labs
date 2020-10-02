@@ -131,7 +131,7 @@ int main() {
                              negativerow = i + 1;
 
                          } else {
-                             negaitiverow = -1;
+                             negativerow = -1;
                              break;
                          }
                      }
@@ -140,7 +140,7 @@ int main() {
 
          }
          std::cout << "\n";
-         if (negativerow > 0)std::cout <<"The number of the first row with only negative elements is " << positiverow;
+         if (negativerow > 0)std::cout <<"The number of the first row with only negative elements is " << negativerow;
          else std::cout << "There is no row with only negative elements\n";
 
      }

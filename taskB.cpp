@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-//this version checks every string
+//this version counts correct dates for each string 
 
 // I have another which counts correct dates from the whole file in the commit "bissextile year"
 int main() {
@@ -19,16 +19,6 @@ int main() {
             int length = std::strlen(str);
             int index = 0;
             for (int i = 0; i <= length; ++i) {
-                if (str[i] == ' ') {
-                    word[index] = '\0';
-                    if (index > 0) {
-                        index = 0;
-                    }
-                    continue;
-                }
-
-                word[index] = str[i]; //rewriting words to an array
-                index++;
                 if (std::strlen(word) == 10 && word[2] == '/' && word[5] == '/') {
                     if (word[0] <= '9' && word[0] >= '0' && word[1] <= '9' && word[1] >= '0'
                         && word[3] <= '9' && word[3] >= '0' && word[4] <= '9' && word[4] >= '0'
@@ -51,6 +41,18 @@ int main() {
                         }
                     }
                 }
+                if (str[i] == ' ') {
+                    word[index] = '\0';
+                    if (index > 0) {
+                        index = 0;
+                    }
+                    continue;
+                }
+
+                word[index] = str[i]; //rewriting words to an array
+                index++;
+
+
             }
 
 

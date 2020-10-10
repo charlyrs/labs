@@ -1,11 +1,15 @@
 #include <iostream>
 #include <fstream>
+
+// the same task in the commit "task A"
+
 char *analogstrchr(const char *str, char symbol) {
     while (*str != symbol) {
         if (!*str++) return nullptr;
     }
     return (char *)str;
 }
+
 int main() {
     std::ifstream fin ("function.txt");
     char str[300];

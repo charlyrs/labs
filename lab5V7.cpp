@@ -74,14 +74,14 @@ int main (){
             output("output.txt");
         }
         else if (answerOutputFile == "No") std::cout << "Ok\n";
-        else std::cout << "You were supposed to write Yes or No";
+        else std::cout << "You were supposed to write Yes or No\n";
         fileInput.close();
 
     }
     else if (answerToOpening == "No") {
         std::cout << "Ok, bye\n";
     }
-    else std::cout << "You were supposed to write Yes or No";
+    else std::cout << "You were supposed to write Yes or No\n";
 
 
 

@@ -1,0 +1,3 @@
+"foo" starts to repeat from the line number 1 and repeats 2 times
+"bar" starts to repeat from the line number 3 and repeats 3 times
+"a" starts to repeat from the line number 6 and repeats 2 times

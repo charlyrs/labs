@@ -15,7 +15,7 @@ void output (std::string myFile){
 
 int main (){
     std::ifstream fileInput("input.txt");
-    std::cout << "Do you want to open the file? (Yes/No)\n";
+    std::cout << "Do you want to open the file and get a file report? (Yes/No)\n";
     std::string answerToOpening;
     std::cin >> answerToOpening;
     std::ofstream fileOutput("output.txt");
@@ -55,10 +55,12 @@ int main (){
                                << groupStartCounter
                                << " and repeats " << repeatCounter << " times\n";
                     repeatCounter = 1;
-                    previousLine = currentLine;
+                    
                 }
+        
 
             }
+            previousLine = currentLine;
 
         }
         if (repeatCounter > 1)  //for the last group

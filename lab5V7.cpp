@@ -35,7 +35,7 @@ int main (){
 
         std::string previousLine, currentLine;
         int linesPassed = 0;
-        int groupStartCounter = 0;
+        int groupStartCounter = 1;
         int repeatCounter = 1;
 
 
@@ -44,9 +44,6 @@ int main (){
         while (getline(fileInput, currentLine)) {
             linesPassed++;
             if (previousLine == currentLine) {
-                if (repeatCounter == 1) {
-                    groupStartCounter = linesPassed;
-                }
                 repeatCounter++;
             } else {
 
@@ -54,6 +51,7 @@ int main (){
                                << groupStartCounter
                                << " and repeats " << repeatCounter << " times\n";
                     repeatCounter = 1;
+                    groupStartCounter = linesPassed+1;
                     
                 
         

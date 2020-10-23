@@ -49,21 +49,20 @@ int main (){
                 }
                 repeatCounter++;
             } else {
-                if (repeatCounter > 1) {
 
                     fileOutput << "\"" << previousLine << "\" starts to repeat from the line number "
                                << groupStartCounter
                                << " and repeats " << repeatCounter << " times\n";
                     repeatCounter = 1;
                     
-                }
+                
         
 
             }
             previousLine = currentLine;
 
         }
-        if (repeatCounter > 1)  //for the last group
+          //for the last group
             fileOutput << "\"" << previousLine << "\" starts to repeat from the line number "
                        << groupStartCounter
                        << " and repeats " << repeatCounter << " times\n";

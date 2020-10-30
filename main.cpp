@@ -97,7 +97,9 @@ void FileWriter (std::map<std::string, int> b){
     std::ofstream fout ("output.txt");
     std::map <std::string , int> :: iterator it = b.begin();
     for (; it != b.end(); it++){
-        fout << it->first << " " << it -> second << '\n';
+        fout.width(28);
+        fout << it->first << " ";
+        fout << it -> second << '\n';
     }
     fout.close();
 }

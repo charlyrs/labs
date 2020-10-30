@@ -114,7 +114,21 @@ std::vector<std::string> SortColl(std::vector<std::string>& a){
     }
     return a;
 }
-
+void Encryption (std::string file_path, unsigned char key){
+    std::ofstream fout(file_path+"_encr.txt");
+    std::vector<std::string> sss=FileReader("output.txt");
+    sss=WordParser(sss);
+    std::string temp;
+    for (int k=0; k<sss.size(); ++k) {
+        std::string temp=sss[k];
+        for (int i = 0; i < temp.size(); ++i) {
+            char n = (temp[i] ^ key);
+            fout << n;
+        }
+        std::cout << '\n';
+    }
+    fout.close();
+}
 int main() {
     std::vector<std::string> v=FileReader("input.txt");
    std::vector<std::string> d=WordParser(v);

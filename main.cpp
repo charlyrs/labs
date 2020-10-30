@@ -114,32 +114,18 @@ std::vector<std::string> SortColl(std::vector<std::string>& a){
 }
 
 int main() {
-//    std::string a;
-//    std::cin >> a;
-//    if (IsNotDecreasingOrder(a)==true) std::cout << 1 << '\n';
-//    std::vector<std::string> v=FileReader("input.txt");
-//    std::vector<std::string> d=WordParser(v);
-//    std::vector<std::string> m=FindItems(v);
-//    std::cout << m[0] << '\n';
-//    std::cout << m[1] << '\n';
-//    std::cout << m[2] << '\n';
-//      std::map<std::string, int> mp;
-//      mp["127"]=55;
-//      FileWriter(mp);
-       std::vector<std::string> v=FileReader("input.txt");
-       //std::vector<std::string> b=("input.txt");
-       //FileWriter(MapWeight(v));
-//       SortColl(v);
-//       std::cout << v[0] << " ";
-//       std::cout << v[1] << " ";
-//       std::cout << v[2] << " ";
-       std::cout << WordWeight(v);
+    std::vector<std::string> v=FileReader("input.txt");
+   std::vector<std::string> d=WordParser(v);
+   std::vector<std::string> m=FindItems(v);
+   std::cout << v[0] << '\n';
+   std::cout << d[0] << '\n';
+   std::cout << m[0] << '\n';
 
+   std::cout << WordWeight(v);
 
-
-
-
-
+   SortColl(v);
+   FileWriter(MapWeight(v));
+   
 
 
 

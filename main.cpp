@@ -4,9 +4,11 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-std::string ConsoleReader (std::string &msg){
-    std::cin >> msg;
-    return msg;
+std::string ConsoleReader (std::string msg){
+    std::cout << msg << '\n';
+    std::string str;
+    std::cin >> str;
+    return str;
 }
 bool IsNotDecreasingOrder (std::string a){
     bool answer;

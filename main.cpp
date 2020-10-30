@@ -102,6 +102,7 @@ void FileWriter (std::map<std::string, int> b){
     fout.close();
 }
 std::vector<std::string> SortColl(std::vector<std::string>& a){
+    a=WordParser(a);
     for (int i = 0; i < a.size() - 1; i++) {
         for (int j = 0; j < a.size() - 1; j++) {
             if (WordWeight(a[j]) > WordWeight(a[j + 1])) {

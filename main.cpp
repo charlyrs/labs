@@ -125,7 +125,7 @@ void Encryption (std::string file_path, unsigned char key){
             char n = (temp[i] ^ key);
             fout << n;
         }
-        std::cout << '\n';
+        fout << '\n';
     }
     fout.close();
 }

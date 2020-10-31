@@ -52,6 +52,7 @@ void Fraction::Print() {
         } else if (numerator == 0) std::cout << 0;
         else std::cout << "-" << (std::abs(numerator) - i) << "/" << std::abs(denominator) << " ";
     }
+    if (std::abs(numerator)==std::abs(denominator)) std::cout << 1;
 
 }
 int Fraction::Nod (){

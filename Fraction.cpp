@@ -7,6 +7,10 @@ Fraction::Fraction(int a, int b) {
     else {std::cout << "Error. Can't divide by zero\n";
     std::exit(1);}
 }
+Fraction::Fraction(const Fraction &a) {
+    numerator=a.numerator;
+    denominator=a.denominator;
+}
 int Fraction::GetNumerator() {
     return numerator;
 }

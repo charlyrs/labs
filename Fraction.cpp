@@ -42,14 +42,16 @@ void Fraction::Print() {
     int i=0;
     if (std::abs (numerator)>std::abs(denominator)){
         i=numerator/denominator;
-        std::cout << i << " ";
+        std::cout << i << ".";
         i=std::abs(i*denominator);
+        std::cout << (std::abs(numerator) - i) << "/" << std::abs(denominator) << " ";
     }
-    if (numerator*denominator>0){
-        std::cout << (std::abs (numerator)-i) << "/" << std::abs (denominator) << " ";
+    if (std::abs(numerator)<std::abs(denominator)) {
+        if (numerator * denominator > 0) {
+            std::cout << (std::abs(numerator) - i) << "/" << std::abs(denominator) << " ";
+        } else if (numerator == 0) std::cout << 0;
+        else std::cout << "-" << (std::abs(numerator) - i) << "/" << std::abs(denominator) << " ";
     }
-    else if (numerator==0) std::cout << 0;
-    else std::cout <<"-"<< (std::abs (numerator)-i) << "/" << std::abs (denominator) << " ";
 
 }
 int Fraction::Nod (){

@@ -8,7 +8,7 @@ class Fraction {
     int denominator;
     int Nod ();
     Fraction();
-    Fraction Reduction ();
+    void Reduction ();
 
 public:
         Fraction(int, int);

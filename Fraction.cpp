@@ -42,9 +42,12 @@ void Fraction::Print() {
     int i=0;
     if (std::abs (numerator)>std::abs(denominator)){
         i=numerator/denominator;
-        std::cout << i << ".";
-        i=std::abs(i*denominator);
-        std::cout << (std::abs(numerator) - i) << "/" << std::abs(denominator) << " ";
+        std::cout << i;
+        if (std::abs(numerator)%std::abs(denominator)!=0) {
+            i = std::abs(i * denominator);
+            std::cout << "." <<(std::abs(numerator) - i) << "/" << std::abs(denominator) << " ";
+        }
+        else std::cout << " ";
     }
     if (std::abs(numerator)<std::abs(denominator)) {
         if (numerator * denominator > 0) {

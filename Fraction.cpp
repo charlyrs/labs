@@ -39,11 +39,17 @@ void Fraction::DivideRational(const Fraction& a) {
 }
 void Fraction::Print() {
     Reduction();
+    int i=0;
+    if (numerator>denominator){
+        i=numerator/denominator;
+        std::cout << i << " ";
+        i=i*denominator;
+    }
     if (numerator*denominator>0){
-        std::cout << std::abs (numerator) << "/" << std::abs (denominator) << " ";
+        std::cout << std::abs (numerator-i) << "/" << std::abs (denominator) << " ";
     }
     else if (numerator==0) std::cout << 0;
-    else std::cout <<"-"<< std::abs (numerator) << "/" << std::abs (denominator) << " ";
+    else std::cout <<"-"<< std::abs (numerator-i) << "/" << std::abs (denominator) << " ";
 
 }
 int Fraction::Nod (){

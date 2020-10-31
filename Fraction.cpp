@@ -54,12 +54,12 @@ int Fraction::Nod (){
     return nod;
 
 }
-Fraction Fraction::Reduction() {
+void Fraction::Reduction() {
     int nod = Nod();
-   numerator/=nod;
-   denominator/=nod;
-    return (numerator, denominator);
+    numerator /= nod;
+    denominator /= nod;
 
 }
+
 
 

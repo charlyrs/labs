@@ -11,7 +11,8 @@ class Fraction {
     Fraction Reduction ();
 
 public:
-        Fraction(int a=1, int b=1);
+        Fraction(int, int);
+        Fraction (const Fraction&);
         int GetNumerator ();
         int GetDenominator ();
         void AddRational (const Fraction&);

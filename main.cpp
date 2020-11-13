@@ -11,17 +11,19 @@ double AverageScoreForAllStudents(std::vector<Student*> students){
     }
     return (double)sum/students.size();
 }
-double AverageScoreForGroup (std::vector<Student*> students, int course, int group){
-    double sum=0;
-    double count=0;
-    for (auto& person : students){
-        if(person->GetCourse()==course && person->GetGroup()==group){
-            sum+=person->AverageScore();
+double AverageScoreForGroup(std::vector<Student*> students, int course, int group, int session) {
+    double sum = 0;
+    double count = 0;
+    if (session == 0) return 0;
+    for (auto& person : students) {
+        if (person->GetCourse() == course && person->GetGroup() == group && person->GetSession() == session) {
+            sum += person->AverageScore();
             count++;
         }
     }
-    return sum/count;
+    return sum / count;
 }
+
 
 
 int main() {
@@ -59,7 +61,7 @@ int main() {
     students.push_back(&student5);
     students.push_back(&student6);
     students.push_back(&student7);
-    std::cout << AverageScoreForGroup(students,1,4) << "\n";
+    
     std::cout<<student6.GetId();
 
 

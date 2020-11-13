@@ -3,7 +3,7 @@
 #include <iostream>
 StudentAfterSecondSession::StudentAfterSecondSession(char *name, int course, int group, int marks1[4], int* marks2)
 :StudentAfterFirstSession(name, course, group, marks1){
-
+    session = 2;
     for (int i=0; i<5; ++i){
         marksAfterSecondSession[i]=marks2[i];
     }
@@ -12,14 +12,14 @@ StudentAfterSecondSession::StudentAfterSecondSession(char *name, int course, int
 }
 StudentAfterSecondSession::StudentAfterSecondSession(const StudentAfterFirstSession & stud, int* marks2)
 :StudentAfterFirstSession(stud){
-
+    session = 2;
     for (int i=0; i<5; ++i){
         marksAfterSecondSession[i]=marks2[i];
     }
 
 }
 StudentAfterSecondSession::StudentAfterSecondSession(const StudentAfterSecondSession&a) : StudentAfterFirstSession(a) {
-
+    session = 2;
     for (int i=0; i<5; ++i){
         marksAfterSecondSession[i]=a.marksAfterSecondSession[i];
     }

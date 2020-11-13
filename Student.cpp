@@ -3,6 +3,7 @@
 int Student::quantity=0 ;
 
 Student::Student(char* _name, int _course, int _group){
+    session = 0;
     int size = strlen(_name);
     name = new char[size+1];
     for (int k=0; k<size; ++k){
@@ -19,6 +20,7 @@ Student::Student(char* _name, int _course, int _group){
 
 }
 Student::Student(const Student &a) {
+    session = 0;
     int size = strlen(a.name);
     name = new char[size+1];
     for (int k=0; k<size; ++k){
@@ -78,4 +80,7 @@ std::ostream& operator << (std::ostream &out, Student& a){
 }
 double Student::AverageScore() {
     return 0;
+}
+int Student::GetSession() {
+    return session;
 }

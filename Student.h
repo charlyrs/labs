@@ -12,6 +12,7 @@ protected:
     char* name;
     int course;
     int group;
+    int session;
 
 
 
@@ -29,6 +30,7 @@ public:
     void SetName(char* newname);
     void SetCourse(int newcourse);
     void SetGroup(int newgroup);
+    int GetSession();
     virtual double AverageScore();
     friend std::ostream& operator<<(std::ostream &out, Student &student);
 

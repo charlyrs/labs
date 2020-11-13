@@ -4,7 +4,7 @@
 
 StudentAfterFirstSession::StudentAfterFirstSession(char *_name, int _course, int _group, int* _marks)
 :Student(_name,_course, _group){
-
+    session = 1;
     for (int i=0; i<4; ++i){
         marksAfterFirstSession[i]=_marks[i];
     }
@@ -12,14 +12,14 @@ StudentAfterFirstSession::StudentAfterFirstSession(char *_name, int _course, int
 }
 StudentAfterFirstSession::StudentAfterFirstSession(const Student& student, int* _marks)
 :Student(student){
-
+    session = 1;
     for (int i=0; i<4; ++i){
         marksAfterFirstSession[i]=_marks[i];
     }
 
 }
 StudentAfterFirstSession::StudentAfterFirstSession(const StudentAfterFirstSession& a) : Student(a) {
-
+    session = 1;
     for (int i=0; i<4; ++i){
         marksAfterFirstSession[i]=a.marksAfterFirstSession[i];
     }

@@ -53,12 +53,12 @@ int main() {
     std::cout<< student5 << '\n';
 
     std::vector<Student*> students;
-    students.push_back(new Student(student1));
-    students.push_back(new Student(student2));
-    students.push_back(new StudentAfterFirstSession(student3));
-    students.push_back(new StudentAfterSecondSession(student5));
-    students.push_back(new StudentAfterSecondSession(student6));
-    students.push_back(new StudentAfterSecondSession(student7));
+    students.push_back(&student1);
+    students.push_back(&student2);
+    students.push_back(&student3);
+    students.push_back(&student5);
+    students.push_back(&student6);
+    students.push_back(&student7);
     std::cout << AverageScoreForGroup(students,1,4) << "\n";
     std::cout<<student6.GetId();
 

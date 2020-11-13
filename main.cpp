@@ -51,6 +51,7 @@ int main() {
     StudentAfterSecondSession student5(student4,l);
     StudentAfterSecondSession student6(student3,v);
     StudentAfterSecondSession student7(student3,v);
+    StudentAfterSecondSession student8 ("Vasya Vasilev", 1, 4,n,l);
 
     std::cout<< student5 << '\n';
 
@@ -61,8 +62,9 @@ int main() {
     students.push_back(&student5);
     students.push_back(&student6);
     students.push_back(&student7);
+    students.push_back(&student8);
+    std::cout << AverageScoreForGroup(students,1,4,2);
     
-    std::cout<<student6.GetId();
 
 
 

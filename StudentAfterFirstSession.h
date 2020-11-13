@@ -12,7 +12,7 @@ public:
     StudentAfterFirstSession(char*, int,int, int*);
     StudentAfterFirstSession(const StudentAfterFirstSession&);
 
-    void SetMarks();
+    
     void SetFirstSessionMarks(int*);
     int* GetFirstSessionMarks();
     double AverageScore();

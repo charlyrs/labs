@@ -26,14 +26,7 @@ StudentAfterFirstSession::StudentAfterFirstSession(const StudentAfterFirstSessio
 
 }
 
-void StudentAfterFirstSession::SetMarks() {
-    std::cout << "Enter marks\n";
 
-    for (int k=0; k<4;++k){
-        std::cin >> marksAfterFirstSession[k];
-    }
-
-}
 void StudentAfterFirstSession ::SetFirstSessionMarks(int *_marks) {
 
     for (int k=0; k<4;++k){

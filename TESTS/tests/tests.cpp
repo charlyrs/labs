@@ -271,4 +271,35 @@ TEST (Qualities, S2){
     EXPECT_EQ(a.GetRecordBook(),c.GetRecordBook());
     EXPECT_NE(a.GetId(),c.GetId());
 }
+TEST (SettersForChildren, Name){
+    int marks[4]={9,6,8,6};
+    StudentAfterFirstSession a("A",1,1, marks);
+    a.SetName("B");
+    EXPECT_STREQ(a.GetName(),"B");
+    int marks1[5]={9,8,10,7,7};
+    StudentAfterSecondSession b(a,marks1);
+    b.SetName("C");
+    EXPECT_STREQ(b.GetName(),"C");
+}
+TEST (SettersForChildren, Group){
+    int marks[4]={9,6,8,6};
+    StudentAfterFirstSession a("A",1,1, marks);
+    a.SetGroup(2);
+    EXPECT_EQ(a.GetGroup(),2);
+    int marks1[5]={9,8,10,7,7};
+    StudentAfterSecondSession b(a,marks1);
+    b.SetGroup(3);
+    EXPECT_EQ(b.GetGroup(),3);
+}
+TEST (SettersForChildren, Course){
+    int marks[4]={9,6,8,6};
+    StudentAfterFirstSession a("A",1,1, marks);
+    a.SetCourse(2);
+    EXPECT_EQ(a.GetCourse(),2);
+    int marks1[5]={9,8,10,7,7};
+    StudentAfterSecondSession b(a,marks1);
+    b.SetCourse(3);
+    EXPECT_EQ(b.GetCourse(),3);
+}
+
 

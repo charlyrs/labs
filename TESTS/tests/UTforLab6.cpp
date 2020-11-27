@@ -27,6 +27,7 @@ TEST(ConstructorTests, Copy){
     EXPECT_EQ(a.GetDenominator(),b.GetDenominator());
     EXPECT_EQ(a.GetNumerator(),b.GetNumerator());
 }
+
 TEST (ConstructorTests, CopyNegative){
     Fraction a(-7,12);
     Fraction b(a);
@@ -43,6 +44,11 @@ TEST(FunctionTests, Reduction) {
     EXPECT_EQ(a.GetDenominator(),2);
     Fraction b(0,3);
     EXPECT_FALSE(b.GetDenominator()==0);
+}
+TEST (FunctionTests, ReductionNeg){
+    Fraction a(-2,6);
+    EXPECT_EQ(a.GetNumerator(),-1);
+    EXPECT_EQ(a.GetDenominator(),3);
 }
 TEST(FunctionTests, PrintDoesNotChangeTheValue){
     Fraction a(-1,2);
@@ -105,6 +111,13 @@ TEST(FunctionTests, DivideNegative){
     EXPECT_EQ(a.GetNumerator(), -1);
     EXPECT_EQ(a.GetDenominator(),2);
     EXPECT_TRUE(b.GetNumerator()==2 && b.GetDenominator()==3);
+}
+TEST(FunctionTests, DivideNegative1){
+    Fraction a(-1,3);
+    Fraction b(-2,3);
+    a.DivideRational(b);
+    EXPECT_EQ(a.GetNumerator(), 1);
+    EXPECT_EQ(a.GetDenominator(),2);
 }
 
 

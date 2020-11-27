@@ -241,4 +241,34 @@ TEST (S2Functions, Average){
     double res=(10+9+8+10+10+7+4+10+8)/9.0;
     EXPECT_EQ(res,a.AverageScore());
 }
+TEST (Qualities, Student){
+    Student a("A",1,1);
+    Student b("B",1,2);
+    EXPECT_NE(a.GetId(),b.GetId());
+    EXPECT_NE(a.GetRecordBook(),b.GetRecordBook());
+    Student c(a);
+    EXPECT_EQ(a.GetRecordBook(),c.GetRecordBook());
+    EXPECT_NE(a.GetId(),c.GetId());
+}
+TEST(Qualities, S1){
+    int marks[4]={6,6,6,6};
+    StudentAfterFirstSession a("A",1,1, marks);
+    StudentAfterFirstSession b("B",1,2, marks);
+    EXPECT_NE(a.GetId(),b.GetId());
+    EXPECT_NE(a.GetRecordBook(),b.GetRecordBook());
+    StudentAfterFirstSession c(a);
+    EXPECT_EQ(a.GetRecordBook(),c.GetRecordBook());
+    EXPECT_NE(a.GetId(),c.GetId());
+}
+TEST (Qualities, S2){
+    int marks[4]={6,6,6,6};
+    int marks1[5]={7,7,7,7,7};
+    StudentAfterSecondSession a("A",1,1, marks, marks1);
+    StudentAfterSecondSession b("B",1,2, marks, marks1);
+    EXPECT_NE(a.GetId(),b.GetId());
+    EXPECT_NE(a.GetRecordBook(),b.GetRecordBook());
+    StudentAfterSecondSession c(a);
+    EXPECT_EQ(a.GetRecordBook(),c.GetRecordBook());
+    EXPECT_NE(a.GetId(),c.GetId());
+}
 

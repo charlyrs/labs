@@ -35,6 +35,7 @@ T Stack<T>::pop() {
 }
 template<typename T>
 T Stack<T>::peak() {
+    if (size==0) throw "aaaa";
     return data[topID];
 }
 template<typename T>

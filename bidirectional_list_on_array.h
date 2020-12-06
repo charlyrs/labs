@@ -240,7 +240,7 @@ void BiDirectionalListOnArray<T>::InsertAfter(size_t index, const T &value) {
     if (size_==capacity_)
       capacity_*=GROWTH_FACTOR;
     if(index==0) {
-      //PushFront(value);
+      PushFront(value);
       return;
     }
 

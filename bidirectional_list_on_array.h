@@ -213,7 +213,7 @@ void BiDirectionalListOnArray<T>::PushBack(T &&value) {
 }
 template<typename T>
 void BiDirectionalListOnArray<T>::InsertBefore(size_t index, const T &value) {
-  if (index + 1 > size_ || index < 0 || index==0) throw "error";
+  if (index + 1 > size_ || index < 0) throw "error";
   if(index==0) {
      PushFront(value);
      return;

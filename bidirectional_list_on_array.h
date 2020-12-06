@@ -57,6 +57,13 @@ class BiDirectionalListOnArray {
     if (size_ == 0) throw std::invalid_argument(" ");
     return (data_+size_-1);
   }
+  void InsertBefore(size_t index, T &&value) {
+    InsertBefore(index, value);
+  }
+
+  void InsertAfter(size_t index, T &&value) {
+    InsertAfter(index, value);
+  }
   bool operator==(BiDirectionalListOnArray<T> &a) const {
     if (size_ != a.size_) return false;
     for (int i = 0; i < size_; ++i) {

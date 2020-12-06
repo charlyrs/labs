@@ -10,10 +10,10 @@ class WordCard {
   WordCard(string &);
 
   WordCard(const WordCard &);
-  WordCard &operator=(WordCard &other);
+  WordCard &operator=(const WordCard &other);
 
   WordCard(WordCard &&);
-  WordCard &operator=(WordCard &&other);
+  WordCard &operator=(WordCard &&other) noexept;
 
   ~WordCard() = default;
 
@@ -52,13 +52,13 @@ string WordCard::GetWord() const {
 void WordCard::IncCounter() {
   counter_++;
 }
-WordCard &WordCard::operator=(WordCard &other) {
+WordCard &WordCard::operator=(const WordCard &other) {
   if (this == &other) return *this;
   word_ = other.word_;
   counter_ = other.counter_;
   return *this;
 }
-WordCard::WordCard(WordCard &&other) {
+WordCard::WordCard(WordCard &&other) noexept {
   word_ = other.word_;
   counter_ = other.counter_;
   other.word_ = "";

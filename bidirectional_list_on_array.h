@@ -105,6 +105,9 @@ BiDirectionalListOnArray<T>::BiDirectionalListOnArray(std::initializer_list<T> l
   } else
     capacity_ = MIN_CAPACITY;
   data_ = new T[capacity_];
+  for (auto i : l) {
+    PushBack(i);
+  }
 }
 template<typename T>
 int BiDirectionalListOnArray<T>::Size() const {
@@ -218,7 +221,11 @@ void BiDirectionalListOnArray<T>::PushBack(T &&value) {
 }
 template<typename T>
 void BiDirectionalListOnArray<T>::InsertBefore(size_t index, const T &value) {
-  if (index + 1 >= size_ || index < 0 || index==0) throw "error";
+  if (index + 1 > size_ || index < 0 || index==0) throw "error";
+  if(index==0) {
+     PushFront(value);
+     return;
+  }
   else InsertAfter(index-1,value);
 
 }
@@ -246,10 +253,6 @@ void BiDirectionalListOnArray<T>::InsertAfter(size_t index, const T &value) {
     if (index+1>size_ || index<0 ) throw std::invalid_argument(" ");
     if (size_==capacity_)
       capacity_*=GROWTH_FACTOR;
-    if(index==0) {
-      PushFront(value);
-      return;
-    }
 
     T* temp=new T[size_-index];
     for (int i=index+1, k=0; i<size_; ++i, ++k){

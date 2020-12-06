@@ -179,11 +179,7 @@ void BiDirectionalListOnArray<T>::PushFront(const T &value) {
     newdata[i + 1] = data_[i];
   }
   delete[] data_;
-  data_ = new T[capacity_];
-  for (int k = 0; k < size_ + 1; ++k) {
-    data_[k] = newdata[k];
-  }
-  delete[] newdata;
+  data_ = newdata;
   size_++;
 }
 template<typename T>
@@ -196,7 +192,7 @@ void BiDirectionalListOnArray<T>::PushBack(const T &value) {
   if (size_ == MIN_CAPACITY)
     capacity_ = capacity_ * GROWTH_FACTOR;
   else
-    capacity_ == MIN_CAPACITY;
+    capacity_ = MIN_CAPACITY;
   T *newdata = new T[capacity_];
   int i = 0;
   for (; i < size_; i++) {
@@ -204,11 +200,7 @@ void BiDirectionalListOnArray<T>::PushBack(const T &value) {
   }
   newdata[i] = value;
   delete[] data_;
-  data_ = new T[capacity_];
-  for (int k = 0; k < size_ + 1; ++k) {
-    data_[k] = newdata[k];
-  }
-  delete[] newdata;
+  data_ = newdata;
   size_++;
 }
 template<typename T>

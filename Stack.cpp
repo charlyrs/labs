@@ -7,6 +7,17 @@ Stack<T>::Stack() {
     data = new T[capacity];
     topID = -1;
 }
+template <typename T>
+void Stack<T>::ExtendCapacity() {
+  capacity*=2;
+  T* tempdata = new T [capacity];
+  for (int i = 0; i < size; ++i) {
+    tempdata[i]=data[i];
+  }
+  delete [] data;
+  data=tempdata;
+}
+
 template<typename T>
 Stack<T>::Stack(int capacity) {
     size = 0;
@@ -18,7 +29,7 @@ Stack<T>::Stack(int capacity) {
 template<typename T>
 void Stack<T>::push(T a) {
     if (size == capacity) {
-        throw std::overflow_error("Stack is full");
+        ExtendCapacity();
     }
     size++;
     data[++topID] = a;

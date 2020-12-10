@@ -53,7 +53,10 @@ T Stack<T>::operator>>(T &a) {
 }
 template<typename T>
 Stack<T> &Stack<T>::operator=(const Stack<T> &q) {
-    delete data;
+    if (this==&q){
+    return *this;
+    }
+    delete[] data;
     capacity = q.capacity;
     data = new T[capacity];
     int i = 0;

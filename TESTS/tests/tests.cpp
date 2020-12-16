@@ -301,5 +301,41 @@ TEST (SettersForChildren, Course){
     b.SetCourse(3);
     EXPECT_EQ(b.GetCourse(),3);
 }
+std::vector<Student *> foo() {
+    int k[4] = {9, 7, 9, 8};
+    int n[4] = {7, 9, 10, 9};
+    int f[4] = {10, 8, 7, 6};
+    int l[5] = {10, 9, 9, 6, 6};
+    int v[5] = {10, 9, 9, 10, 10};
+    std::vector<Student *> students;
+    students.push_back(new StudentAfterFirstSession("Liliya Khomyakova", 1, 4, k));
+    students.push_back(new StudentAfterSecondSession("Vova Bullatov", 1, 4, n, l));
+    students.push_back(new StudentAfterSecondSession("Georgiy Razmislovich", 1, 4, f, v));
+    students.push_back(new Student("Aaaa", 1, 3));
+    return students;
+}
+
+void CleanMemory(std::vector<Student *> &a) {
+    for (auto x : a) {
+        delete x;
+    }
+}
+
+
+TEST (AverageScore, ForGroup) {
+    auto a = foo();
+    double score = (a[1]->AverageScore() + a[2]->AverageScore()) / 2.0;
+    EXPECT_EQ(AverageScoreForGroup(a, 1, 4, 2), score);
+    EXPECT_EQ(AverageScoreForGroup(a, 1, 4, 1), 8.25);
+    EXPECT_EQ(AverageScoreForGroup(a, 1, 3, 0), 0);
+    CleanMemory(a);
+}
+
+TEST (AverageScore, ForAll) {
+    auto a = foo();
+    double score = (a[0]->AverageScore() + a[1]->AverageScore() + a[2]->AverageScore() + a[3]->AverageScore()) / 4.0;
+    EXPECT_EQ(AverageScoreForAllStudents(a), score);
+    CleanMemory(a);
+}
 
 

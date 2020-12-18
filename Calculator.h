@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include <regex>
 #include <sstream>
@@ -6,7 +7,7 @@
 #include "Stack.h"
 
 class Calculator {
-public:
+private:
     std::string RemoveSpaces(std::string str) {
         str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
         return str;
@@ -16,30 +17,19 @@ public:
         std::regex a("[(]");
         std::regex b("[)]");
         std::smatch res;
+        std::string str1 = str;
         int left = 0;
         int right = 0;
         while (regex_search(str, res, a)) {
             left++;
             str = res.suffix();
         }
-        while (regex_search(str, res, b)) {
+        while (regex_search(str1, res, b)) {
             right++;
-            str = res.suffix();
+            str1 = res.suffix();
         }
         return left == right;
     }
-
-    bool IsCorrect(std::string str) {
-        str = RemoveSpaces(str);
-        if (!CheckBrackets(str)) return false;
-        bool result;
-        // :)
-        std::regex exp(
-                "((\\-)?((\\()?)*((\\-)?[0-9]+(\\.[0-9]+)?)*(\\-|\\+|\\*|\\/)([\\(]([\\-])?)?([0-9]+(\\.[0-9]+)?)*([\\)])?)*");
-        result = std::regex_match(str, exp);
-        return result;
-    }
-
     std::string FindNumber(std::string &str) {
         std::regex doubleExpression("(\\-)?[0-9]+(\\.[0-9]+)?");
         std::smatch res;
@@ -72,17 +62,23 @@ public:
         }
         std::string polish;
         Stack<char> st;
+        bool PrevIsDigit=false;
+        bool PrevIsClosedBracket=false;
         if (IsCorrect(str)) {
             while (str.length() != 0) {
                 char x = str[0];
                 if (isdigit(x)) {
                     polish += FindNumber(str);
                     polish += " ";
+                    PrevIsDigit=true;
+                    PrevIsClosedBracket=false;
                     continue;
                 }
                 if (x == '(') {
                     st.push(x);
                     str.erase(0, 1);
+                    PrevIsDigit=false;
+                    PrevIsClosedBracket=false;
                     continue;
                 }
                 if (x == ')') {
@@ -93,6 +89,8 @@ public:
                     }
                     st.pop();
                     str.erase(0, 1);
+                    PrevIsDigit=false;
+                    PrevIsClosedBracket=true;
                     continue;
                 }
                 if (priority(x) > 0) {
@@ -100,11 +98,15 @@ public:
                         if (st.isEmpty() && polish.empty()) {  // -1+2
                             polish += FindNumber(str);
                             polish += " ";
+                            PrevIsDigit=true;
+                            PrevIsClosedBracket=false;
                             continue;
                         }
-                        if (!st.isEmpty() && st.peak() == '(') { // 2+(-1)
+                        if (!st.isEmpty() && !PrevIsDigit && !PrevIsClosedBracket) { // 2+(-1)
                             polish += FindNumber(str);
                             polish += " ";
+                            PrevIsDigit=true;
+                            PrevIsClosedBracket=false;
                             continue;
                         }
                     }
@@ -114,6 +116,8 @@ public:
                         polish += " ";
                     }
                     st.push(FindOperators(str));
+                    PrevIsDigit=false;
+                    PrevIsClosedBracket=false;
                     continue;
                 }
             }
@@ -141,6 +145,25 @@ public:
         return result;
     }
 
+public:
+
+    bool IsCorrect(std::string str) {
+        str = RemoveSpaces(str);
+        if (priority(str[0])>0 && str[0]!='-') return false;
+        std::regex zero("(\\/0)");
+        std::smatch temp;
+        if (regex_search(str,temp,zero)) return false;
+        if (!CheckBrackets(str)) return false;
+        bool result;
+        // :)
+        std::regex exp(
+                "((\\-)?(((\\()?)*((\\-)?[0-9]+(\\.[0-9]+)?)((\\(|\\))?)*)*(\\-|\\+|\\*|\\/)*(((\\()?)*((\\-)?[0-9]+(\\.[0-9]+)?)((\\))?)*))*");
+        result = std::regex_match(str, exp);
+        return result;
+    }
+
+
+
     double GetResult(std::string str) {
         str = ConvertToPolish(str);
         std::regex doubleExpression("(\\-)?[0-9]+(\\.[0-9]+)?");
@@ -161,7 +184,7 @@ public:
                 result.push(temp);
             }
         }
-        if (result.Size()==1) return result.pop();
+        if (result.Size() == 1) return result.pop();
         else throw "aaa";
     }
 };

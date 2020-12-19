@@ -150,9 +150,9 @@ public:
     bool IsCorrect(std::string str) {
         str = RemoveSpaces(str);
         if (priority(str[0])>0 && str[0]!='-') return false;
-        std::regex zero("(\\/0)");
+       // std::regex zero("(\\/0)");
         std::smatch temp;
-        if (regex_search(str,temp,zero)) return false;
+       // if (regex_search(str,temp,zero)) return false;
         if (!CheckBrackets(str)) return false;
         bool result;
         // :)

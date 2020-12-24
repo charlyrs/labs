@@ -24,6 +24,9 @@ public:
     bool operator!= (const Stack<T>&a);
     bool operator < (const Stack<T>&) const;
     bool operator > (const Stack<T>&) const;
+     bool isEmpty(){
+        return size==0;
+    }
     void ExtendCapacity();
     T operator[](int);
     int Size();

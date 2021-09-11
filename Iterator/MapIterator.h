@@ -5,18 +5,19 @@
 #include <string>
 #include <iterator>
 #include <vector>
-//#include <pair>
 
 template <typename T>
 class MapIterator : Iterator<T>{
-    std::vector<std::pair<std::string, T>> pairs;
+    std::vector<std::string> keys;
+    std::map<std::string, T> map;
     int index = 0;
 public:
     MapIterator(std::map<std::string, T> data, std::string required_key_substring){
         auto  iter = data.begin();
+        map = data;
         while (iter!= data.end()){
             if(iter->first.find(required_key_substring)!= std::string::npos){
-                pairs.push_back(std::make_pair(iter->first, iter->second));
+                keys.push_back(iter->first);
             }
             iter++;
         }
@@ -24,23 +25,23 @@ public:
     }
     T first() override {
        index = 0;
-       return pairs[0].second;
+       return map.find(keys[0])->second;
     }
     bool is_done() override {
-        return index == pairs.size();
+        return index == keys.size();
     }
     void next() override {
-        if(index == pairs.size()){
+        if(index == keys.size()){
             throw std::exception("Array is out of range");
         }
         index++;
     }
     T current_item() override {
-        if(index == pairs.size()){
+        if(index == keys.size()){
             throw std::exception("Array is out of range");
         }
 
-        return pairs[index].second;
+        return map.find(keys[index])->second;
     }
 
 };

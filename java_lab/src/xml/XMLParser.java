@@ -25,6 +25,7 @@ public class XMLParser {
         DocumentBuilder dBuilder = factory.newDocumentBuilder();
         Document doc = dBuilder.parse(xmlFile);
         doc.getDocumentElement().normalize();
+
         var a = doc.getDocumentElement().getElementsByTagName("color").item(0).getTextContent();
         var b = doc.getDocumentElement().getElementsByTagName("color").item(0).getAttributes().item(0).getTextContent();
 

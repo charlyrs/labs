@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
-    <color hash ="ff0000">l.</color>
+    <color hash ="#e64580">private|public|class</color>
+
+    <color hash ="#ee9086">int|String|void</color>
+    <color hash ="#ff97bb">"(.+)?"</color>
+    <color hash ="#e0b0ff">\d+</color>
+    <color hash ="#ee9086">\{|\}</color>
 </root>

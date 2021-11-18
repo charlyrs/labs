@@ -1,12 +1,11 @@
-package com.company;
-import file.FileHandler;
-import file.MyFile;
+package gui;
 import pattern.PatternHandler;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
+
 public class FindDialog extends JFrame {
     private JTextField find = new JTextField();
     private JButton buttonFind = new JButton("Find");
@@ -18,7 +17,6 @@ public class FindDialog extends JFrame {
         buttonFind.addActionListener(new ButtonActionListener());
         this.setBounds(200,200, 350,200);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        Container c = getContentPane(); // клиентская область окна
         setLayout(new BorderLayout());
         add(find, BorderLayout.PAGE_START);
         add(buttonFind, BorderLayout.PAGE_END);
@@ -26,11 +24,16 @@ public class FindDialog extends JFrame {
     }
     class ButtonActionListener implements ActionListener{
         private int i = 0;
+        private String text;
 
         @Override
         public void actionPerformed(ActionEvent e)
         {
             PatternHandler patternHandler = new PatternHandler(find.getText());
+            if(!Objects.equals(text, find.getText())){
+                i = 0;
+                text = find.getText();
+            }
             var list = patternHandler.FindPattern(input.getText());
             input.setSelectionColor(Color.PINK);
             input.setSelectionStart(list.get(i).getStartIndex());

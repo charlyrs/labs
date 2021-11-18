@@ -8,7 +8,9 @@ import pattern.IndexRange;
 
 public class PatternHandler {
     private final Pattern pattern;
-    public PatternHandler(String pattern){this.pattern = Pattern.compile(pattern);}
+    public PatternHandler(String pattern){
+        this.pattern = Pattern.compile(pattern);
+    }
     public ArrayList<IndexRange> FindPattern(String text){
         ArrayList<IndexRange> result = new ArrayList<IndexRange>();
         Matcher matcher = pattern.matcher(text);

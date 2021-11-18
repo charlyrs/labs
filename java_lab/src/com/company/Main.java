@@ -1,22 +1,17 @@
 package com.company;
-import file.FileHandler;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-import pattern.PatternHandler;
-import xml.XMLParser;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
+import gui.GUI;
 
 public class Main {
-    public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
+    public static void main(String[] args) {
         GUI sss = new GUI();
         sss.setVisible(true);
-        //File file = new File();
+//        XMLParser p = new XMLParser();
+//        try {
+//            p.Read();
+//        }catch (Exception e){
+//
+//        }
 
-       // var c = a.getChildNodes();
     }
 }

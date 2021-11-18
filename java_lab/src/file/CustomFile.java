@@ -3,22 +3,12 @@ package file;
 import java.io.*;
 import java.util.ArrayList;
 
-public class MyFile {
+public class CustomFile {
     private final ArrayList<String> _lines = new ArrayList<String>();
     private final String fileName;
-    public MyFile(String fileName){
+    public CustomFile(String fileName){
         this.fileName = fileName;
     }
-    public void AddLine(String line){
-        StringBuilder sb = new StringBuilder();
-        sb.append("\n");
-        sb.append(line);
-        if(Write(sb.toString(),true)){
-            _lines.add(line);
-        }
-    }
-    public String GetLine(int index){ return _lines.get(index);}
-    public int Size(){ return  _lines.size();}
     public String FileName(){ return fileName;}
     public boolean Write(String str, boolean append){
         try(FileWriter writer = new FileWriter(fileName, append)) {
@@ -30,14 +20,13 @@ public class MyFile {
     }
     public boolean Read(){
         FileReader fileReader = null;
-        try {
-            fileReader = new FileReader(fileName);
-        } catch (FileNotFoundException e) { return false;}
+        try { fileReader = new FileReader(fileName);} catch (FileNotFoundException e) { return false;}
         String line;
         try {
             BufferedReader reader = new BufferedReader(fileReader);
             while ((line = reader.readLine()) != null){
-                _lines.add(line);}
+                _lines.add(line);
+            }
         } catch (IOException e) {  return false; }
         return true;
     }
@@ -49,11 +38,5 @@ public class MyFile {
         }
         return res.toString();
     }
-    public ArrayList<String> list(){return _lines;}
-    public void ChangeLine(int index, String replacementString){
-        try {
-            _lines.set(index,replacementString);
-            Write(FileToString(), false);
-        } catch (Exception e) { return;}
-    }
+
 }

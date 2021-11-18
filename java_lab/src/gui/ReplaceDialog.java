@@ -1,4 +1,4 @@
-package com.company;
+package gui;
 import pattern.PatternHandler;
 
 import java.awt.*;
@@ -17,7 +17,6 @@ public class ReplaceDialog extends JFrame {
         buttonFind.addActionListener(new ButtonActionListener());
         this.setBounds(200,200, 350,200);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        Container c = getContentPane(); // клиентская область окна
         setLayout(new BorderLayout());
         add(part, BorderLayout.PAGE_START);
         add(replacement, BorderLayout.CENTER);
@@ -30,7 +29,6 @@ public class ReplaceDialog extends JFrame {
         public void actionPerformed(ActionEvent e)
         {
             PatternHandler patternHandler = new PatternHandler(part.getText());
-
             var str = patternHandler.ReplacePattern(input.getText(), replacement.getText());
             input.setText(str);
         }

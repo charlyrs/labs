@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.text.*;
 
 
-public class GUI extends JFrame {
+public class MainGUI extends JFrame {
     private final JTextPane input = new JTextPane();
     private final JMenuBar menuBar = new JMenuBar();
     private final JMenu mFile = new JMenu("File");
@@ -26,7 +26,7 @@ public class GUI extends JFrame {
     final StyleContext cont = StyleContext.getDefaultStyleContext();
     AttributeSet attrDefault = cont.addAttribute(cont.getEmptySet(), StyleConstants.Foreground,Color.decode("#b82e5c") );
 
-    public GUI(){
+    public MainGUI(){
         super("Notebook");
         this.setBounds(100,100, 650,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

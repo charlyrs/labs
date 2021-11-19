@@ -1,10 +1,10 @@
 package com.company;
 
-import gui.GUI;
+import gui.MainGUI;
 
 public class Main {
     public static void main(String[] args) {
-        GUI sss = new GUI();
+        MainGUI sss = new MainGUI();
         sss.setVisible(true);
 //        XMLParser p = new XMLParser();
 //        try {

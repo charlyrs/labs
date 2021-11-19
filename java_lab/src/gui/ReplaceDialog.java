@@ -11,6 +11,7 @@ public class ReplaceDialog extends JFrame {
     private JButton buttonFind = new JButton("Replace");
     private String fileName = "";
     private JTextPane input;
+
     public ReplaceDialog(String file, JTextPane area){
         fileName = file;
         input = area;

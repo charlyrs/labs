@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<patterns name="Shrek">
+    <default>
+        <background_color>#6CBC7F</background_color>
+        <font_color>#4F5400</font_color>
+    </default>
+    <highlight>
+        <color hex ="#006E33">
+            <pattern>private</pattern>
+            <pattern>public</pattern>
+            <pattern>class</pattern>
+        </color>
+        <color hex ="#812C7B">
+            <pattern>int</pattern>
+            <pattern>String</pattern>
+            <pattern>void</pattern>
+        </color>
+        <color hex ="#615EBD">
+            <pattern>\d+</pattern>
+        </color>
+        <color hex ="#B1BC55">
+            <pattern>\{|\}</pattern>
+        </color>
+        <color hex ="#F0FF19">
+            <pattern>"(.+)?"</pattern>
+        </color>
+    </highlight>
+</patterns>

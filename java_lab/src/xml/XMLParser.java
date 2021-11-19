@@ -11,10 +11,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class XMLParser {
-    private String filename="src/pattern.xml";
-    public XMLParser(){}
-    public XMLParser(String file){filename = file;}
-    public  ArrayList<Pattern> Read() throws ParserConfigurationException, IOException, SAXException {
+    private String filename="src/themes/pattern.xml";
+    private ArrayList<Pattern> patterns = new ArrayList<>();
+    private Color backgroundColor;
+    private Color foregroundColor;
+    public XMLParser(){
+        try {
+            Parse();
+        }catch (Exception e){}
+    }
+    public XMLParser(String file){
+        filename = file;
+        try {
+            Parse();
+        }catch (Exception e){}}
+    public Color GetBackgroundColor(){
+        return backgroundColor;
+    }
+    public Color GetForegroundColor(){
+        return foregroundColor;
+    }
+    public ArrayList<Pattern> GetPatterns(){
+        return patterns;
+    }
+    public void Parse() throws ParserConfigurationException, IOException, SAXException {
         File xmlFile = new File(filename);
         ArrayList<Pattern> res = new ArrayList<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -31,7 +51,11 @@ public class XMLParser {
                 res.add(new Pattern(a, Color.decode(b)));
             }
         }
-        return res;
+        var bgcolor = doc.getElementsByTagName("background_color").item(0).getTextContent();
+        var fgcolor = doc.getElementsByTagName("font_color").item(0).getTextContent();
+        backgroundColor = Color.decode(bgcolor);
+        foregroundColor = Color.decode(fgcolor);
+        patterns = res;
 
     }
 

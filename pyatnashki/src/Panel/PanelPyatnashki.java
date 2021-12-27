@@ -1,15 +1,17 @@
-package com.company;
+package Panel;
+
+import Game.Game;
+import GUI.ColorPalette;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.Random;
 
-public class Panel extends JPanel {
+public class PanelPyatnashki extends JPanel {
     private JButton[][] buttons = new JButton[4][4];
     private ColorPalette colorPalette;
     private Game game = new Game();
-    public Panel(GridLayout gl, ColorPalette colorPalette){
+    public PanelPyatnashki(GridLayout gl, ColorPalette colorPalette){
         super(gl);
         this.colorPalette = colorPalette;
         GenerateLayout();

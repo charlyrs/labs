@@ -1,12 +1,12 @@
-package com.company;
+package Panel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanelClickListener implements ActionListener {
-    private Panel panel;
-    public PanelClickListener(Panel panel){
+    private PanelPyatnashki panel;
+    public PanelClickListener(PanelPyatnashki panel){
         super();
         this.panel = panel;
     }

@@ -1,11 +1,11 @@
-package com.company;
+package Game;
 
 import java.util.Random;
 
 public class Game {
     private int[][] numbers = new int[4][4];
-    private Pair emptyIndex = new Pair();
-    public Pair getEmptyIndex(){
+    private IndexPair emptyIndex = new IndexPair();
+    public IndexPair getEmptyIndex(){
         return emptyIndex;
     }
     public Game(){

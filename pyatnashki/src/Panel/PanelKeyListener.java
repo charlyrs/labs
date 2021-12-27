@@ -1,11 +1,11 @@
-package com.company;
+package Panel;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class PanelKeyListener implements KeyListener {
-    private Panel panel;
-    public PanelKeyListener(Panel panel){
+    private PanelPyatnashki panel;
+    public PanelKeyListener(PanelPyatnashki panel){
         super();
         this.panel = panel;
     }

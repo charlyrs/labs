@@ -1,20 +1,16 @@
-package com.company;
+package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Random;
+import Panel.*;
 
 
 public class GUI extends JFrame {
-    private Panel panel;
+    private PanelPyatnashki panel;
 
     public GUI() {
         super("Pyatnashki");
-        panel = new Panel(new GridLayout(4, 4, 2, 2), new ColorPalette());
+        panel = new PanelPyatnashki(new GridLayout(4, 4, 2, 2), new ColorPalette());
         setBounds(200, 200, 300, 300);
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

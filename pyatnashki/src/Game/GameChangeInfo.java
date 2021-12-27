@@ -1,4 +1,4 @@
-package com.company;
+package Game;
 
 public class GameChangeInfo {
     private int i;

@@ -6,6 +6,7 @@ import GUI.ColorPalette;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import Game.*;
 
 public class PanelPyatnashki extends JPanel {
     private JButton[][] buttons = new JButton[4][4];
@@ -15,6 +16,9 @@ public class PanelPyatnashki extends JPanel {
         super(gl);
         this.colorPalette = colorPalette;
         GenerateLayout();
+    }
+    public IndexPair getEmptyIndex(){
+        return game.getEmptyIndex();
     }
 
     public void GenerateLayout() {
@@ -57,44 +61,55 @@ public class PanelPyatnashki extends JPanel {
         }
         swapLabels(change.getI(),change.getJ(),change.getLabel());
     }
-    public void processKeyEvent(KeyEvent e){
+    public void moveLeft(boolean all){
         var emptyIndex = game.getEmptyIndex();
-        if(e.getKeyCode() == KeyEvent.VK_LEFT && emptyIndex.j < 3){
-            if(e.isControlDown()){
-                while (emptyIndex.j!=3){
-                    changeByIndex(emptyIndex.i,emptyIndex.j+1);
-                }
-            }else { changeByIndex(emptyIndex.i,emptyIndex.j+1);}
+        if(all){
+            while (emptyIndex.j!=3){
+                emptyIndex = game.getEmptyIndex();
+                changeByIndex(emptyIndex.i,emptyIndex.j+1);
+            }
+        }else {
+            changeByIndex(emptyIndex.i,emptyIndex.j+1);
+        }
 
-        }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT&& emptyIndex.j > 0){
-            if(e.isControlDown()){
-                while (emptyIndex.j!=0){
-                    changeByIndex(emptyIndex.i,emptyIndex.j-1);
-                }
-            } else {
-                changeByIndex(emptyIndex.i,emptyIndex.j-1);}
-
-        }
-        if(e.getKeyCode() == KeyEvent.VK_UP && emptyIndex.i < 3){
-            if(e.isControlDown()){
-                while (emptyIndex.i!=3){
-                    changeByIndex(emptyIndex.i+1,emptyIndex.j);
-                }
-            } else {
-                changeByIndex(emptyIndex.i+1,emptyIndex.j);}
-
-        }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN && emptyIndex.i > 0){
-            if(e.isControlDown()){
-                while (emptyIndex.i!=0){
-                    changeByIndex(emptyIndex.i-1,emptyIndex.j);
-                }
-            } else {
-                changeByIndex(emptyIndex.i-1,emptyIndex.j);}
-        }
-        repaintPanel();
     }
+    public void moveRight(boolean all){
+        var emptyIndex = game.getEmptyIndex();
+        if(all){
+            while (emptyIndex.j!=0){
+                emptyIndex = game.getEmptyIndex();
+                changeByIndex(emptyIndex.i,emptyIndex.j-1);
+            }
+        }else {
+            changeByIndex(emptyIndex.i,emptyIndex.j-1);
+        }
+
+    }
+    public void moveUp(boolean all){
+        var emptyIndex = game.getEmptyIndex();
+        if(all){
+            while (emptyIndex.i!=3){
+                emptyIndex = game.getEmptyIndex();
+                changeByIndex(emptyIndex.i+1,emptyIndex.j);
+            }
+        }else {
+            changeByIndex(emptyIndex.i+1,emptyIndex.j);
+        }
+
+    }
+    public void moveDown(boolean all){
+        var emptyIndex = game.getEmptyIndex();
+        if(all){
+            while (emptyIndex.i!=0){
+                emptyIndex = game.getEmptyIndex();
+                changeByIndex(emptyIndex.i-1,emptyIndex.j);
+            }
+        }else {
+            changeByIndex(emptyIndex.i-1,emptyIndex.j);
+        }
+
+    }
+
 
     public void repaintPanel(){
         var numbers = game.getNumbers();

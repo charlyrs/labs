@@ -44,26 +44,7 @@ public class PanelPyatnashki extends JPanel {
         }
         repaintPanel();
     }
-    public void swapLabels(int i, int j, int num){
-        buttons[game.getEmptyIndex().i][game.getEmptyIndex().j].setVisible(false);
-        buttons[i][j].setText(Integer.toString(num));
-        buttons[i][j].setVisible(true);
-    }
 
-//    public void changeByIndex(int i, int j){
-//        var change = game.changeByIndex(i,j);
-//        if (change == null){
-//            return;
-//        }
-//        swapLabels(change.getI(),change.getJ(),change.getLabel());
-//    }
-//    public void changeByNumber(int num) {
-//       var change = game.changeByNumber(num);
-//        if (change == null){
-//            return;
-//        }
-//        swapLabels(change.getI(),change.getJ(),change.getLabel());
-//    }
 
     public void repaintPanel(){
         var numbers = game.getNumbers();

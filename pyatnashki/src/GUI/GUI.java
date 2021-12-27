@@ -16,7 +16,7 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setFocusable(true);
         Container container = getContentPane();
-        addKeyListener(new PanelKeyListener(panel));
+        addKeyListener(new PanelKeyListener(panel, panel.getGame()));
         container.add(panel);
     }
 

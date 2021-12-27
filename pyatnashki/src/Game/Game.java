@@ -53,6 +53,50 @@ public class Game {
         }
         return null;
     }
+    public void moveLeft(boolean all){
+        if(all){
+            while (emptyIndex.j!=3){
+                emptyIndex = getEmptyIndex();
+                changeByIndex(emptyIndex.i,emptyIndex.j+1);
+            }
+        }else {
+            changeByIndex(emptyIndex.i,emptyIndex.j+1);
+        }
+
+    }
+    public void moveRight(boolean all){
+        if(all){
+            while (emptyIndex.j!=0){
+                emptyIndex = getEmptyIndex();
+                changeByIndex(emptyIndex.i,emptyIndex.j-1);
+            }
+        }else {
+            changeByIndex(emptyIndex.i,emptyIndex.j-1);
+        }
+
+    }
+    public void moveUp(boolean all){
+        if(all){
+            while (emptyIndex.i!=3){
+                emptyIndex = getEmptyIndex();
+                changeByIndex(emptyIndex.i+1,emptyIndex.j);
+            }
+        }else {
+            changeByIndex(emptyIndex.i+1,emptyIndex.j);
+        }
+
+    }
+    public void moveDown(boolean all){
+        if(all){
+            while (emptyIndex.i!=0){
+                emptyIndex = getEmptyIndex();
+                changeByIndex(emptyIndex.i-1,emptyIndex.j);
+            }
+        }else {
+            changeByIndex(emptyIndex.i-1,emptyIndex.j);
+        }
+
+    }
     public GameChangeInfo changeByNumber(int num) {
         int i = 0, j = 0;
         for (int k = 0; k < 4; k++) {

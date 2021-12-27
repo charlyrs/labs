@@ -20,6 +20,9 @@ public class PanelPyatnashki extends JPanel {
     public IndexPair getEmptyIndex(){
         return game.getEmptyIndex();
     }
+    public Game getGame(){
+        return game;
+    }
 
     public void GenerateLayout() {
         var numbers = game.getNumbers();
@@ -31,7 +34,7 @@ public class PanelPyatnashki extends JPanel {
                 buttons[i][j].setFont(new Font("Liliya", Font.BOLD, 20));
                 buttons[i][j].setFocusable(false);
                 this.add(buttons[i][j]);
-                buttons[i][j].addActionListener(new PanelClickListener(this));
+                buttons[i][j].addActionListener(new PanelClickListener(this, getGame()));
                 if (numbers[i][j] == 0) {
                     buttons[i][j].setVisible(false);
                     game.getEmptyIndex().i = i;
@@ -47,69 +50,20 @@ public class PanelPyatnashki extends JPanel {
         buttons[i][j].setVisible(true);
     }
 
-    public void changeByIndex(int i, int j){
-        var change = game.changeByIndex(i,j);
-        if (change == null){
-            return;
-        }
-        swapLabels(change.getI(),change.getJ(),change.getLabel());
-    }
-    public void changeByNumber(int num) {
-       var change = game.changeByNumber(num);
-        if (change == null){
-            return;
-        }
-        swapLabels(change.getI(),change.getJ(),change.getLabel());
-    }
-    public void moveLeft(boolean all){
-        var emptyIndex = game.getEmptyIndex();
-        if(all){
-            while (emptyIndex.j!=3){
-                emptyIndex = game.getEmptyIndex();
-                changeByIndex(emptyIndex.i,emptyIndex.j+1);
-            }
-        }else {
-            changeByIndex(emptyIndex.i,emptyIndex.j+1);
-        }
-
-    }
-    public void moveRight(boolean all){
-        var emptyIndex = game.getEmptyIndex();
-        if(all){
-            while (emptyIndex.j!=0){
-                emptyIndex = game.getEmptyIndex();
-                changeByIndex(emptyIndex.i,emptyIndex.j-1);
-            }
-        }else {
-            changeByIndex(emptyIndex.i,emptyIndex.j-1);
-        }
-
-    }
-    public void moveUp(boolean all){
-        var emptyIndex = game.getEmptyIndex();
-        if(all){
-            while (emptyIndex.i!=3){
-                emptyIndex = game.getEmptyIndex();
-                changeByIndex(emptyIndex.i+1,emptyIndex.j);
-            }
-        }else {
-            changeByIndex(emptyIndex.i+1,emptyIndex.j);
-        }
-
-    }
-    public void moveDown(boolean all){
-        var emptyIndex = game.getEmptyIndex();
-        if(all){
-            while (emptyIndex.i!=0){
-                emptyIndex = game.getEmptyIndex();
-                changeByIndex(emptyIndex.i-1,emptyIndex.j);
-            }
-        }else {
-            changeByIndex(emptyIndex.i-1,emptyIndex.j);
-        }
-
-    }
-
+//    public void changeByIndex(int i, int j){
+//        var change = game.changeByIndex(i,j);
+//        if (change == null){
+//            return;
+//        }
+//        swapLabels(change.getI(),change.getJ(),change.getLabel());
+//    }
+//    public void changeByNumber(int num) {
+//       var change = game.changeByNumber(num);
+//        if (change == null){
+//            return;
+//        }
+//        swapLabels(change.getI(),change.getJ(),change.getLabel());
+//    }
 
     public void repaintPanel(){
         var numbers = game.getNumbers();
@@ -117,6 +71,11 @@ public class PanelPyatnashki extends JPanel {
         boolean paint = true;
         for (int i = 0; i < 4; i++){
             for (int j = 0; j < 4; j++){
+                buttons[i][j].setText(Integer.toString(numbers[i][j]));
+                buttons[i][j].setVisible(true);
+                if (numbers[i][j] == 0) {
+                    buttons[i][j].setVisible(false);
+                }
                 if(numbers[i][j] == count && paint){
                     buttons[i][j].setBackground(colorPalette.getWinColor());
                 }else {
